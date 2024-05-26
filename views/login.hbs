@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Clicker</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Cotton Clicker</h1>
+
+        
+        <p>Log in to your account!</p>
+        <form action="/auth" method="post">
+            <div>
+                <input type="text" name="userName" placeholder="Username" class="input_box" required>
+                <input type="password" name="password" placeholder="Password" class="input_box" required>
+                <button type="submit" class="submit">Log in</button>
+            </div>
+        </form>
+
+        <div>
+            <p>{{login_message}}</p>
+        </div>
+
+        <p>Don't have an account? <a href="/index" style="text-decoration: none;">Register here!</a></p>
+    </div>
+</body>
+</html>

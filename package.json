@@ -1,0 +1,25 @@
+{
+  "name": "cottonclickerv2",
+  "version": "1.0.0",
+  "description": "a clicker game focusing on cotton",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cc",
+    "ccv2",
+    "cottonclicker",
+    "cotton"
+  ],
+  "author": "Lucas Gustafsson",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.7"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express-session": "^1.18.0",
+    "nodemon": "^3.1.0"
+  }
+}

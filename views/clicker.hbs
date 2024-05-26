@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div>
+            <div class="inventory">
+                <div class="cash_box inv_item">
+                    <p id="cash" style="font-size: 3rem;">{{cash_db}}</p>
+                    <img src="images/cashIcon.png" alt="cash" style="width: 50px;">
+                </div>
+
+                <div class="cotton_box inv_item">
+                    <p id="cotton" style="font-size: 3rem;">{{cotton_db}}</p>
+                    <img src="images/cottonIcon.png" alt="cotton" style="width: 50px;">
+                </div>
+
+                <div class="passive_box inv_item">
+                    <p id="passive" style="font-size: 3rem;">{{passive_cotton_db}}</p>
+                    <img src="images/cottonIcon.png" alt="cotton" style="width: 50px;">
+                    <p style="font-size: 1.8rem;" id="per_s"><b>/s</b></p>
+                </div>
+
+                <div class="sell_box inv_item" onclick="sellCotton()">
+                    <p style="font-size: 2rem;" id="sell_cotton_text"><b>Sell Cotton</b></p>
+                </div>
+
+                <div class="options_box inv_item" onclick="openSettings()">
+                    <p style="font-size: 2rem;"><b>Settings</b></p>
+                </div>
+
+
+                <form action="/save" method="post" class="inv_item">
+                    <textarea id="cotton_save" style="display: none;" name="cotton">{{cotton_db}}</textarea>
+                    <textarea id="cash_save" style="display: none;" name="cash">{{cash_db}}</textarea>
+                    <textarea id="passive_save" style="display: none;" name="passive">{{passive_cotton_db}}</textarea>
+                    <textarea id="sell_multiplier_save" style="display: none;" name="sell_multiplier">{{sell_multiplier_db}}</textarea>
+                    <textarea id="click_multiplier_save" style="display: none;" name="click_multiplier">{{click_multiplier_db}}</textarea>
+                    <textarea id="passive_cotton_save" style="display: none;" name="passive_cotton">{{passive_cotton_db}}</textarea>
+                    <textarea id="both_hands_save" style="display: none;" name="both_hands">{{both_hands_db}}</textarea>
+                    <textarea id="uppg_1_cost_save" style="display: none;" name="uppg_1_cost">{{uppg_1_cost_db}}</textarea>
+                    <textarea id="uppg_2_cost_save" style="display: none;" name="uppg_2_cost">{{uppg_2_cost_db}}</textarea>
+                    <textarea id="uppg_3_cost_save" style="display: none;" name="uppg_3_cost">{{uppg_3_cost_db}}</textarea>
+                    <textarea id="uppg_4_cost_save" style="display: none;" name="uppg_4_cost">{{uppg_4_cost_db}}</textarea>
+                    <textarea id="uppg_5_cost_save" style="display: none;" name="uppg_5_cost">{{uppg_5_cost_db}}</textarea>
+                    <textarea id="uppg_6_cost_save" style="display: none;" name="uppg_6_cost">{{uppg_6_cost_db}}</textarea>
+                    <button type="submit" class="save_box" style="font-size: 2rem; background-color: transparent; width:100%; height:100%;">Save</button>
+                </form>
+            </div>
+        </div>
+        <div class="container_p1">
+            <div class="cotton_pic_container">
+                <img src="images/cottonbror.png" alt="cotton" id="cotton_image" onclick="onCottonClick()">
+            </div>
+        </div>
+        <div class="container_p2">
+            <div class="shop_container">
+                <div class="shop_item" onclick="buyClick(1)">
+                    <div style="height: 100%;"></div>
+                    <div class="shop_item_text">
+                        <p style="font-size: 1.8rem;"><b>Better Picking</b></p>
+                        <p style="font-size: 1.2rem;">Buy to get 1 more cotton per click</p>
+                    </div>
+                    <div class="shop_item_info">
+                        <p class="shop_item_cost" id="uppg_1_cost" style="font-size: 1.5rem;">10</p>
+                        <img src="images/cashIcon.png" alt="cash" class="shop_item_cash_icon">
+                    </div>
+                </div>
+                
+                <div class="shop_item" onclick="buyClick(2)">
+                    <div style="height: 100%;"></div>
+                    <div class="shop_item_text">
+                        <p style="font-size: 1.8rem;"><b>Cheap Worker</b></p>
+                        <p style="font-size: 1.2rem;">Buy to increase your passive cotton by 15</p>
+                    </div>
+                    <div class="shop_item_info">
+                        <p class="shop_item_cost" id="uppg_2_cost" style="font-size: 1.5rem;">100</p>
+                        <img src="images/cashIcon.png" alt="cash" class="shop_item_cash_icon">
+                    </div>
+                </div>
+
+                <div class="shop_item" onclick="buyClick(3)">
+                    <div style="height: 100%;"></div>
+                    <div class="shop_item_text">
+                        <p style="font-size: 1.8rem;"><b>Bigger Cotton</b></p>
+                        <p style="font-size: 1.2rem;">The cotton grows bigger using steroids, + 15 per click</p>
+                    </div>
+                    <div class="shop_item_info">
+                        <p class="shop_item_cost" id="uppg_3_cost" style="font-size: 1.5rem;">1000</p>
+                        <img src="images/cashIcon.png" alt="cash" class="shop_item_cash_icon">
+                    </div>
+                </div>
+                
+                <div class="shop_item" onclick="buyClick(4)">
+                    <div style="height: 100%;"></div>
+                    <div class="shop_item_text">
+                        <p style="font-size: 1.8rem;"><b>Expensive Cotton</b></p>
+                        <p style="font-size: 1.2rem;">Make that cotton PRICEY</p>
+                    </div>
+                    <div class="shop_item_info">
+                        <p class="shop_item_cost" id="uppg_4_cost" style="font-size: 1.5rem;">10000</p>
+                        <img src="images/cashIcon.png" alt="cash" class="shop_item_cash_icon">
+                    </div>
+                </div>
+                
+                <div class="shop_item" onclick="buyClick(5)">
+                    <div style="height: 100%;"></div>
+                    <div class="shop_item_text">
+                        <p style="font-size: 1.8rem;"><b>Better Worker</b></p>
+                        <p style="font-size: 1.2rem;">The better kind, sicc passive gains</p>
+                    </div>
+                    <div class="shop_item_info">
+                        <p class="shop_item_cost" id="uppg_5_cost" style="font-size: 1.5rem;">100000</p>
+                        <img src="images/cashIcon.png" alt="cash" class="shop_item_cash_icon">
+                    </div>
+                </div>
+                
+                <div class="shop_item hands_upgrade" onclick="buyClick(6)">
+                    <div style="height: 100%;"></div>
+                    <div class="shop_item_text">
+                        <p style="font-size: 1.8rem;"><b>Use Both Hands</b></p>
+                        <p style="font-size: 1.2rem;">Now you use both hands for picking</p>
+                    </div>
+                    <div class="shop_item_info">
+                        <p class="shop_item_cost" id="uppg_6_cost" style="font-size: 1.5rem;">1000000</p>
+                        <img src="images/cashIcon.png" alt="cash" class="shop_item_cash_icon">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="credits">
+                <p>Credits:</p>
+                <a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by vectorsmarket15 - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/cotton" title="Cotton icons">Cotton icons created by Freepik - Flaticon</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        window.onload = function() {
+            updateValues();
+        };
+
+        function openSettings() {
+            window.location.href = "/settings";
+        }
+
+        // Initialisera variabler, 
+        var cotton = parseInt(document.getElementById("cotton_save").innerHTML);
+        var cash = parseInt(document.getElementById("cash_save").innerHTML);
+        var sell_multiplier = parseInt(document.getElementById("sell_multiplier_save").innerHTML);
+        var click_multiplier = parseInt(document.getElementById("click_multiplier_save").innerHTML);
+        var passive_cotton = parseInt(document.getElementById("passive_cotton_save").innerHTML);
+        var both_hands = parseInt(document.getElementById("both_hands_save").innerHTML);
+
+        // Samma här men för uppgraderingar
+        var uppg_1_cost = parseInt(document.getElementById("uppg_1_cost_save").innerHTML);
+        var uppg_2_cost = parseInt(document.getElementById("uppg_2_cost_save").innerHTML);
+        var uppg_3_cost = parseInt(document.getElementById("uppg_3_cost_save").innerHTML);
+        var uppg_4_cost = parseInt(document.getElementById("uppg_4_cost_save").innerHTML);
+        var uppg_5_cost = parseInt(document.getElementById("uppg_5_cost_save").innerHTML);
+        var uppg_6_cost = parseInt(document.getElementById("uppg_6_cost_save").innerHTML);
+
+        // Detta körs när sidan laddas in, uppdaterar alla värden på sidan, annars står de orginala värdena kvar.
+        function updateValues() {
+            document.getElementById("cotton").innerHTML = cotton;
+            document.getElementById("cash").innerHTML = cash;
+            document.getElementById("passive").innerHTML = Math.floor(passive_cotton);
+            document.getElementById("uppg_1_cost").innerHTML = uppg_1_cost;
+            document.getElementById("uppg_2_cost").innerHTML = uppg_2_cost;
+            document.getElementById("uppg_3_cost").innerHTML = uppg_3_cost;
+            document.getElementById("uppg_4_cost").innerHTML = uppg_4_cost;
+            document.getElementById("uppg_5_cost").innerHTML = uppg_5_cost;
+            document.getElementById("uppg_6_cost").innerHTML = uppg_6_cost;
+
+            //denna är lite speciell då den uppdateras direkt till bought
+            if (both_hands = 1) {
+                document.getElementById("uppg_6_cost").innerHTML = "Bought";
+            }
+        }
+
+        // Detta körs varje sekund. Använder den inbyggda funktionen setInterval som jag har satt till att köra varje sekund.
+        //set interval kör sedan en funktion som uppdaterar värdet på sidan och sparar ner det i local storage.
+        setInterval(function() {
+            // ger en cotton 
+            cotton += passive_cotton;
+            // uppdaterar värdet på sidan, använder floor för att inte få decimaler om jag ville multiplicera med 0.5 eller något.
+            document.getElementById("cotton").innerHTML = cotton;
+            document.getElementById("passive").innerHTML = Math.floor(passive_cotton);
+
+            updateFormValues();
+        
+        }, 1000); // 1000 millisekunder = 1 sekund
+
+        //detta händer om man klickar på cotton knappen
+        function onCottonClick() {
+            //om man köpt den sista uppgraderingen får man dubbla cotton
+            cotton += 1 * click_multiplier;
+            if (both_hands = 1){
+                cotton += 1 * click_multiplier;
+            }
+            document.getElementById("cotton").innerHTML = cotton;
+        }
+
+        //vad som ska hända när man trycker på sälj knappen
+        function sellCotton() {
+            //så länge du har mer än 0 cotton så får du sälja
+            if (cotton > 0) {
+                cash += cotton * sell_multiplier;
+                document.getElementById("cash").innerHTML = cash;
+                cotton = 0;
+                document.getElementById("cotton").innerHTML = cotton;
+            }
+        }
+
+        // en enkel variabel
+        var cost_multiplier = 1.2;
+
+        //tar in "item" som kan vara från 1 - 6
+        //kollar igenom en switch för att se vilken uppgradering som ska köpas och sätter sedan kostnaden till rätt värde
+        //detta händer när man trycker på köp knapparna
+        function buyClick(item) {
+            var cost;
+            switch (item) {
+            case 1:
+                cost = uppg_1_cost;
+                break;
+            case 2:
+                cost = uppg_2_cost;
+                break;
+            case 3:
+                cost = uppg_3_cost;
+                break;
+            case 4:
+                cost = uppg_4_cost;
+                break;
+            case 5:
+                cost = uppg_5_cost;
+                break;
+            case 6:
+                cost = uppg_6_cost;
+                break;
+            }
+
+            //om man har nog med pengar så köps uppgraderingen
+            if (cash >= cost) {
+                cash -= cost;
+                updateCost(item);
+                applyUpgrade(item);
+                document.getElementById("cash").innerHTML = Math.floor(cash);
+            } else { //om man inte har råd
+                alert("Can't afford that");
+            }
+        }
+
+        // en funktion som uppdaterar kostnaden för uppgraderingarna
+        function updateCost(item) {
+            //denna är mycket smart och sparar en massa kod. istället för att skriva alla uppgraderingar så kan jag bara skriva uppgr_ + item + _cost
+            var cost_element = document.getElementById("uppg_" + item + "_cost");
+
+            switch (item) {
+            case 1:
+                uppg_1_cost = Math.floor(uppg_1_cost * cost_multiplier);
+                cost_element.innerHTML = uppg_1_cost;
+                break;
+            case 2:
+                uppg_2_cost = Math.floor(uppg_2_cost * cost_multiplier);
+                cost_element.innerHTML = uppg_2_cost;
+                break;
+            case 3:
+                uppg_3_cost = Math.floor(uppg_3_cost * cost_multiplier);
+                cost_element.innerHTML = uppg_3_cost;
+                break;
+            case 4:
+                uppg_4_cost = Math.floor(uppg_4_cost * cost_multiplier);
+                cost_element.innerHTML = uppg_4_cost;
+                break;
+            case 5:
+                uppg_5_cost = Math.floor(uppg_5_cost * cost_multiplier);
+                cost_element.innerHTML = uppg_5_cost;
+                break;
+            case 6:
+                uppg_6_cost = Math.floor(uppg_6_cost * cost_multiplier);
+                cost_element.innerHTML = uppg_6_cost;
+                break;
+            }
+        }
+
+        //väljer vilken uppgradering som ska köpas
+        //alla har olika effekter på spelet
+        function applyUpgrade(item) {
+            switch (item) {
+            case 1:
+                click_multiplier += 1;
+                break;
+            case 2:
+                passive_cotton += 15;
+                break;
+            case 3:
+                click_multiplier += 15;
+                break;
+            case 4:
+                sell_multiplier += 1.5;
+                break;
+            case 5:
+                passive_cotton += 250;
+                break;
+            case 6:
+                both_hands = 1;
+                document.getElementById("uppg_6_cost").innerHTML = "Bought";
+                break;
+            }
+        }
+
+        function updateFormValues() {
+            document.getElementById("cotton_save").innerHTML = cotton;
+            document.getElementById("cash_save").innerHTML = cash;
+            document.getElementById("passive_save").innerHTML = passive_cotton;
+            document.getElementById("sell_multiplier_save").innerHTML = sell_multiplier;
+            document.getElementById("click_multiplier_save").innerHTML = click_multiplier;
+            document.getElementById("passive_cotton_save").innerHTML = passive_cotton;
+            document.getElementById("both_hands_save").innerHTML = both_hands;
+            document.getElementById("uppg_1_cost_save").innerHTML = uppg_1_cost;
+            document.getElementById("uppg_2_cost_save").innerHTML = uppg_2_cost;
+            document.getElementById("uppg_3_cost_save").innerHTML = uppg_3_cost;
+            document.getElementById("uppg_4_cost_save").innerHTML = uppg_4_cost;
+            document.getElementById("uppg_5_cost_save").innerHTML = uppg_5_cost;
+            document.getElementById("uppg_6_cost_save").innerHTML = uppg_6_cost;
+        }
+
+    </script>
+</body>
+</html>

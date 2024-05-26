@@ -1,0 +1,263 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    background-image: url("images/farm.jpg");
+    background-size: cover;
+}
+
+.inventory{
+    width: 100%;
+    height: 10%;
+
+    background-image: url("images/wood.jpg");
+    background-size: cover;
+
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    z-index: 2;
+}
+
+#sell{
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 5px;
+}
+
+.sell_box:active{
+    transform: scale(0.99);
+}
+
+.inv_item{
+    background-image: radial-gradient(circle, rgb(185, 135, 85) 0%,  rgba(113, 74, 36, 0.778) 100%);
+
+    width: 23%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: solid;
+    border-radius: 10px;
+
+    z-index: 2;
+
+    cursor: pointer;
+}
+
+.container_p1{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cotton_pic_container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#cotton_image{
+
+    height: 50%;
+    padding: 50px;
+
+    border: solid;
+    border-radius: 100%;
+
+    background-image: url("images/bg.jpg");
+    background-size: cover;
+
+    transition: 0.05s;
+
+    cursor: pointer;
+
+    z-index: 1;
+}
+
+#cotton_image:active{
+    transform: scale(0.99);
+}
+
+.container_p2{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: url("images/wood.jpg");
+    background-size: cover;
+}
+
+.shop_container{
+    display: flex;
+    width: 90%;
+    
+    padding: 20px;
+    gap: 10px;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shop_item{
+    display: flex;
+
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    min-width: 200px;
+    height: 150px;
+
+    border: solid;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background-image: radial-gradient(circle, rgb(185, 135, 85) 0%,  rgba(113, 74, 36, 0.778) 100%);
+
+    transition: 0.05s;
+}
+
+.shop_item:active{
+    transform: scale(0.99);
+}
+
+.shop_item_text{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.shop_item_info{
+    display: flex;
+    justify-content: flex-end;
+    
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.shop_item_cash_icon{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 60px;
+}
+
+.credits{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    background-color: black;
+    color: white;
+
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 1100px) {
+    .inv_item{
+        width: 23%;
+        height: 100%;
+    }
+    .inventory{
+        position: fixed;
+        display: flex;
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 10px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .inv_item{
+        width: 90%;
+        height: 50px;
+    }
+    .inventory{
+        position: static;
+        display: flex;
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .cotton_pic_container{
+        
+        background-image: url("images/farm.jpg");
+        background-size: cover;
+
+    }
+}
+
+@media (max-width: 700px) {
+    .shop_item{
+        width: 90%;
+    }
+
+    #cotton_image{
+        width: 80%;
+        height: 80%;
+        padding: 0;
+    }
+
+    .shop_container{
+        width: 100%;
+        padding: 0;
+        padding-top: 5px;
+
+        background-image: url("images/wood.jpg");
+        background-size: cover;
+    }
+
+    #sell_cotton_text{
+        font-size: 1.5rem !important;
+    }
+
+    #passive{
+        font-size: 2rem !important;
+    }
+
+    #cotton{
+        font-size: 2rem !important;
+    }
+
+    #cash{
+        font-size: 2rem !important;
+    }
+
+    #per_s{
+        font-size: 1.5rem !important;
+    }
+}
